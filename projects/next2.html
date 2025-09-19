@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Signup</title>
+  <link rel="stylesheet" href="next2.css">
+  <style>
+    
+    .tab-buttons button.active {
+      background: linear-gradient(135deg, #7b2ff7, #f107a3);
+      color: white;
+      border-radius: 6px;
+    }
+    .tab-buttons button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: #eee;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2 id="form-title">Login Form</h2>
+    
+  
+    <div class="tab-buttons">
+      <button id="login-tab" class="active">Login</button>
+      <button id="signup-tab">Signup</button>
+    </div>
+
+    <form id="auth-form">
+      <input type="email" placeholder="Email Address" required>
+      <input type="password" placeholder="Password" required>
+      <a href="#" class="forgot">Forgot password?</a>
+      <button type="submit" class="btn-submit">Login</button>
+    </form>
+
+   
+  </div>
+
+  <script>
+    const loginTab = document.getElementById("login-tab");
+    const signupTab = document.getElementById("signup-tab");
+    const formTitle = document.getElementById("form-title");
+    const authForm = document.getElementById("auth-form");
+    const toggleText = document.getElementById("toggle-text");
+
+  
+    loginTab.addEventListener("click", () => {
+      loginTab.classList.add("active");
+      signupTab.classList.remove("active");
+      formTitle.innerText = "Login Form";
+      authForm.innerHTML = `
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Password" required>
+        <a href="#" class="forgot">Forgot password?</a>
+        <button type="submit" class="btn-submit">Login</button>
+      `;
+      toggleText.innerHTML = `Not a member? <a href="#" id="switch-to-signup">Signup now</a>`;
+    });
+
+  
+    signupTab.addEventListener("click", () => {
+      signupTab.classList.add("active");
+      loginTab.classList.remove("active");
+      formTitle.innerText = "Signup Form";
+      authForm.innerHTML = `
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+        <button type="submit" class="btn-submit">Signup</button>
+      `;
+      toggleText.innerHTML = `Already a member? <a href="#" id="switch-to-login">Login now</a>`;
+    });
+  </script>
+</body>
+</html>
